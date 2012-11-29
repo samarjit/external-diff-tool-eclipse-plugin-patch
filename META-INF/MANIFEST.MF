@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: External_diff
+Bundle-SymbolicName: com.leucht.eclipse.externaldiff; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.leucht.eclipse.externaldiff.ExternalDiff
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,org.eclipse.debug.core
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

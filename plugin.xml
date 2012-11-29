@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.leucht.eclipse.externaldiff"
+   name="External diff Tool Plug-in"
+   version="0.1.1"
+   provider-name="LeuchtHouse Software"
+   class="com.leucht.eclipse.externaldiff.ExternalDiff">
+
+   <runtime>
+      <library name="externaldiff.jar"/>
+   </runtime>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.debug.core"/>
+      <import plugin="org.eclipse.core.resources"/>
+   </requires>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.internal.resources.mapping.ResourceMapping"
+            adaptable="true"
+            id="com.leucht.eclipse.externaldiff.MenuGroups">
+         <menu
+               label="Compare With"
+               path="additions"
+               id="compareWithMenu">
+            <separator
+                  name="compareWithGroup">
+            </separator>
+         </menu>
+      </objectContribution>
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IResource"
+            adaptable="true"
+            id="com.leucht.eclipse.externaldiff.CompareAction">
+         <action
+               label="Each Other (external tool)"
+               tooltip="Compare the Selected Resources using external diff tool"
+               class="com.leucht.eclipse.externaldiff.popup.actions.LaunchExternalDiffTool"
+               menubarPath="compareWithMenu/compareWithGroup"
+               enablesFor="2"
+               id="com.leucht.eclipse.externaldiff.compareWithEachOther">
+         </action>
+      </objectContribution>
+   </extension>
+   
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Compare/External Tool"
+            category="org.eclipse.ui.preferencePages.Workbench"
+            class="com.leucht.eclipse.externaldiff.ExtDiffPreferencePage"
+            id="com.leucht.eclipse.externaldiff.extDiffPreferencePage">
+      </page>
+   </extension>
+   
+   
+   
+   
+   
+   <extension
+         point="org.eclipse.debug.core.launchDelegates">
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.eclipse.debug.core.launchers">
+   </extension>
+   
+
+
+</plugin>
